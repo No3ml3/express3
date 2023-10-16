@@ -20,13 +20,19 @@ const { validateMovie, validateUsers } = require("./validator.js");
 app.post("/api/movies", validateMovie, movieHandlers.postMovie);
 app.put("/api/movies/:id", validateMovie, movieHandlers.updateMovie);
 
+app.delete("/api/movies/:id", movieHandlers.deleteMovie);
+
 app.get("/api/movies", movieHandlers.getMovies);
 app.get("/api/movies/:id", movieHandlers.getMovieById);
+
 
 const UsersHandlers = require("./UserHandlers");
 
 app.post("/api/users", validateUsers, UsersHandlers.postUsers);
 app.put("/api/users/:id", validateUsers, UsersHandlers.updateUser);
+
+app.delete("/api/users/:id", validateUsers.deleteUser);
+
 
 app.get("/api/users", UsersHandlers.getUsers);
 app.get("/api/users/:id", UsersHandlers.getUserById);
