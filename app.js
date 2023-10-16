@@ -31,7 +31,7 @@ const UsersHandlers = require("./UserHandlers");
 app.post("/api/users", validateUsers, UsersHandlers.postUsers);
 app.put("/api/users/:id", validateUsers, UsersHandlers.updateUser);
 
-app.delete("/api/users/:id", validateUsers.deleteUser);
+app.delete("/api/users/:id", UsersHandlers.deleteUser);
 
 
 app.get("/api/users", UsersHandlers.getUsers);
