@@ -28,8 +28,10 @@ app.get("/api/movies/:id", movieHandlers.getMovieById);
 
 const UsersHandlers = require("./UserHandlers");
 
-app.post("/api/users", validateUsers, UsersHandlers.postUsers);
-app.put("/api/users/:id", validateUsers, UsersHandlers.updateUser);
+const { hashPassword } = require("./auth.js");
+
+app.post("/api/users", hashPassword, UsersHandlers.postUsers);
+app.put("/api/users/:id", hashPassword, UsersHandlers.updateUser);
 
 app.delete("/api/users/:id", UsersHandlers.deleteUser);
 
